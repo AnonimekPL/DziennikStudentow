@@ -1,9 +1,26 @@
-GRUPA 1
-nazwisko C_1
-PPK 3 4 2 
-WF 5 5 5 
-matematyka 2 4 5 
+GRUPA 0
 nazwisko P_0
-PPK 5 3 3 
-WF 3 2 5 
-matematyka 4 3 5 2 
+matematyka 4 3 5 2
+PPK 5 3 3
+WF 3 2 5
+nazwisko R_0
+matematyka 2 4 3 4
+PPK 2 2 2
+WF 3 4 2
+GRUPA 1
+nazwisko A_1
+matematyka 2 3 2
+PPK 2 3 3
+WF 5 5 5
+nazwisko B_1
+matematyka 2 3 3
+PPK 2 3 3
+WF 2 3 3
+nazwisko C_1
+matematyka 2 4 5
+PPK 3 4 2
+WF 5 5 5
+nazwisko D_1
+matematyka 3 2 3
+PPK 5 5 4
+WF 2 2 3

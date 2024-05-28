@@ -1,8 +1,8 @@
-#include "funkcje.cpp"
+#include "funkcje.h"
 
 int main(const int argc, const char* argv[])
 {
-	map<int, map<string, map<string, vector<float> > > > uczelnia;
+	BazaDanychUczelni uczelnia;
 	if (not czytajPlik(uczelnia))
 		return 0;
 

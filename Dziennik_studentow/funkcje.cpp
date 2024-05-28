@@ -1,14 +1,10 @@
 /** @file */
-
-#ifndef FUNKCJE_CPP
-#define FUNKCJE_CPP
-
 #include "funkcje.h"
 
 /** Funkcja odczytujaca dane z pliku
 @param uczelnia zmienna przechowujaca dane na temat studentow
 @return zwraca true jesli odczytano dane z pliku*/
-bool czytajPlik(map<int, map<string, map<string, vector<float> > > >& uczelnia) {
+bool czytajPlik(BazaDanychUczelni& uczelnia) {
 	ifstream plik("dane.dat");
 
 	if (plik.good())
@@ -57,7 +53,7 @@ bool czytajPlik(map<int, map<string, map<string, vector<float> > > >& uczelnia) 
 
 /**Funkcja usuwajaca studentow ktorzy uzyskali ocene ponizej 3
 @param uczelnia zmienna przechowujaca dane na temat studentow*/
-void Podsumowanie_Semestru(map<int, map<string, map<string, vector<float> > > >& uczelnia)
+void Podsumowanie_Semestru(BazaDanychUczelni& uczelnia)
 {
 	map<int, vector<string>> naz;
 	for (auto&& grupa : uczelnia) {
@@ -99,7 +95,7 @@ void Podsumowanie_Semestru(map<int, map<string, map<string, vector<float> > > >&
 
 /**Funkcja podajaca: srednia, minimalna, maksymalna ocena z przedmiotow, srednia ocen dla kazdej grupy
 @param uczelnia zmienna przechowujaca dane na temat studentow*/
-void raportPrzedmiotow(map<int, map<string, map<string, vector<float> > > >& uczelnia)
+void raportPrzedmiotow(BazaDanychUczelni& uczelnia)
 {
 	map < string, vector<float>> przedmioty;
 	for (auto& grupa : uczelnia)
@@ -143,7 +139,7 @@ void raportPrzedmiotow(map<int, map<string, map<string, vector<float> > > >& ucz
 }
 /**Funkcja podajaca: grupe, oceny z przedmiotow, na tle grupy danego ucznia
 @param uczelnia zmienna przechowujaca dane na temat studentow*/
-void raportUcznia(map<int, map<string, map<string, vector<float> > > >& uczelnia)
+void raportUcznia(BazaDanychUczelni& uczelnia)
 {
 	string nazwisko;
 	int grp = 0;
@@ -242,7 +238,7 @@ void raportUcznia(map<int, map<string, map<string, vector<float> > > >& uczelnia
 }
 /**Funkcja podajaca: liczbe studentow w grupie, srednia ocen, srednia ocen dla kazdego przedmiotu, najwyzsza srednia w grupie
 @param uczelnia zmienna przechowujaca dane na temat studentow*/
-void raportGrup(map<int, map<string, map<string, vector<float> > > >& uczelnia)
+void raportGrup(BazaDanychUczelni& uczelnia)
 {
 	for (auto& grupa : uczelnia) {
 		//	map<string, vector<float> > srednia_Prz;
@@ -291,7 +287,7 @@ void raportGrup(map<int, map<string, map<string, vector<float> > > >& uczelnia)
 }
 /**Funkcja edytujaca ocene ucznia z danego przedmiotu
 @param uczelnia zmienna przechowujaca dane na temat studentow*/
-void edytujOcene(map<int, map<string, map<string, vector<float> > > >& uczelnia)
+void edytujOcene(BazaDanychUczelni& uczelnia)
 {
 	//int x;
 	int nr, nr_oceny;
@@ -332,7 +328,7 @@ void edytujOcene(map<int, map<string, map<string, vector<float> > > >& uczelnia)
 
 /**Funkcja dodajaca ocene ucznia z danego przedmiotu
 @param uczelnia zmienna przechowujaca dane na temat studentow*/
-void dodajOcene(map<int, map<string, map<string, vector<float> > > >& uczelnia)
+void dodajOcene(BazaDanychUczelni& uczelnia)
 {
 	int nr;
 	float ocena;
@@ -366,7 +362,7 @@ void dodajOcene(map<int, map<string, map<string, vector<float> > > >& uczelnia)
 
 /**Funkcja tworzaca pusta grupe
 @param uczelnia zmienna przechowujaca dane na temat studentow*/
-void dodajGrupe(map<int, map<string, map<string, vector<float> > > >& uczelnia)
+void dodajGrupe(BazaDanychUczelni& uczelnia)
 {
 	cout << "Grupe o jakim numerze chcesz dodac?" << endl;
 	int nr;
@@ -376,7 +372,7 @@ void dodajGrupe(map<int, map<string, map<string, vector<float> > > >& uczelnia)
 
 /**Funkcja usuwajaca grupe ze studentami
 @param uczelnia zmienna przechowujaca dane na temat studentow*/
-void usunGrupe(map<int, map<string, map<string, vector<float> > > >& uczelnia)
+void usunGrupe(BazaDanychUczelni& uczelnia)
 {
 	cout << "Grupe o jakim numerze chcesz usunac?" << endl;
 	int nr;
@@ -386,7 +382,7 @@ void usunGrupe(map<int, map<string, map<string, vector<float> > > >& uczelnia)
 
 /**Funkcja usuwajaca grupe z przeniesieniem studentow do innych grup
 @param uczelnia zmienna przechowujaca dane na temat studentow*/
-void usunGrupePRZ(map<int, map<string, map<string, vector<float> > > >& uczelnia)
+void usunGrupePRZ(BazaDanychUczelni& uczelnia)
 {
 	int max = 3;
 	cout << "Grupe o jakim numerze chcesz usunac?" << endl;
@@ -419,7 +415,7 @@ void usunGrupePRZ(map<int, map<string, map<string, vector<float> > > >& uczelnia
 
 /**Funkcja umozliwiajaca dodanie studenta do podanej grupy
 @param uczelnia zmienna przechowujaca dane na temat studentow*/
-void dodajStudenta(map<int, map<string, map<string, vector<float> > > >& uczelnia)
+void dodajStudenta(BazaDanychUczelni& uczelnia)
 {
 	cout << "Podaj numer grupy i nazwisko studenta" << endl;
 	int nr;
@@ -443,7 +439,7 @@ void dodajStudenta(map<int, map<string, map<string, vector<float> > > >& uczelni
 
 /**Funkcja umozliwiajaca usuniecie studenta z danej grupy
 @param uczelnia zmienna przechowujaca dane na temat studentow*/
-void usunStudenta(map<int, map<string, map<string, vector<float> > > >& uczelnia)
+void usunStudenta(BazaDanychUczelni& uczelnia)
 {
 
 	cout << "Podaj numer grupy i nazwisko studenta" << endl;
@@ -456,7 +452,7 @@ void usunStudenta(map<int, map<string, map<string, vector<float> > > >& uczelnia
 
 /**Funkcja pytajaca sie co zrobic ze zmienna "uczelnia"
 @param uczelnia zmienna przechowujaca dane na temat studentow*/
-void menu(map<int, map<string, map<string, vector<float> > > >& uczelnia)
+void menu(BazaDanychUczelni& uczelnia)
 {
 	int wybor;
 	cout << "dodanie/usuniecie grupy: wpisz -> 1" << endl;
@@ -515,7 +511,7 @@ void menu(map<int, map<string, map<string, vector<float> > > >& uczelnia)
 
 /**Funkcja wyrownujaca ilosc grup, aby maksymalnie w grp bylo 30 osob
 @param uczelnia zmienna przechowujaca dane na temat studentow*/
-void likwidacjaGrup(map<int, map<string, map<string, vector<float> > > >& uczelnia)
+void likwidacjaGrup(BazaDanychUczelni& uczelnia)
 {
 	int max = 30;//maskymalna ilosc osob w grp
 	int x = 0, licznik = 0, grpDoUsun;
@@ -614,7 +610,7 @@ void likwidacjaGrup(map<int, map<string, map<string, vector<float> > > >& uczeln
 /**Funkcja zapisujaca dane do pliku
 @param uczelnia zmienna przechowujaca dane na temat studentow
 @return zwraca true jesli zapisano dane z pliku */
-bool zapiszDoPliku(map<int, map<string, map<string, vector<float> > > >& uczelnia) {
+bool zapiszDoPliku(BazaDanychUczelni& uczelnia) {
 	ofstream plik("dane.dat");
 
 	if (plik.good())
@@ -650,4 +646,3 @@ bool zapiszDoPliku(map<int, map<string, map<string, vector<float> > > >& uczelni
 
 	plik.close();
 }
-#endif
